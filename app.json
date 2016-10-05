@@ -1,0 +1,14 @@
+{
+  "name": "incidentbot",
+  "description": "A Slack bot that assists in managing incident response and post mortem management.",
+  "repository": "https://github.com/elliottcarlson/incidentbot",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["node", "slack", "bot"],
+  "env": {
+    "SLACK_API_TOKEN": "Enter your Slack API Token for your bot here."
+  },
+  "formation": [
+    { "process": "web", "quantity": 0 },
+    { "process": "worker", "quantity": 1 }
+  ]
+}

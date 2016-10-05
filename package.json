@@ -1,0 +1,45 @@
+{
+  "name": "incidentbot",
+  "version": "1.0.0",
+  "description": "A Slack bot that assists in managing incident response and post mortem logging.",
+  "main": "lib/bot.js",
+  "scripts": {
+    "prepublish": "node_modules/babel-cli/bin/babel.js src --out-dir lib",
+    "prestart": "node_modules/babel-cli/bin/babel.js src --out-dir lib",
+    "start": "node lib/bot.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elliottcarlson/incidentbot.git"
+  },
+  "keywords": [
+    "slack",
+    "bot"
+  ],
+  "author": "Elliott Carlson <npm@sublim.nl>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elliottcarlson/incidentbot/issues"
+  },
+  "homepage": "https://github.com/elliottcarlson/ghee-boilerplate#readme",
+  "dependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-es2017": "^6.14.0",
+    "dotenv": "^2.0.0",
+    "ghee": "^0.1.1",
+    "moment": "^2.15.1",
+    "moment-duration-format": "^1.3.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "es2017"
+    ],
+    "plugins": [
+      "transform-decorators-legacy"
+    ]
+  }
+}
