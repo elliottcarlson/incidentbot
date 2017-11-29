@@ -65,10 +65,10 @@ class IncidentBot extends Ghee {
           '`.point` to assign someone.', incident.source_id);
       }
 
-      if (moment.duration(moment().diff(incident.last_updated)).minutes() >= 15) {
+      if (moment.duration(moment().diff(incident.last_updated)).minutes() >= 5) {
         this.incidents[channel.id].last_updated = moment();
         this.slack.sendMessage(`There hasn't been any activity in this channel ` +
-          `for at least 15 minutes - is the incident still ongoing? If not ` +
+          `for at least 5 minutes - is the incident still ongoing? If not ` +
           `please \`.resolve\` the incident.`, incident.source_id);
       }
     }
