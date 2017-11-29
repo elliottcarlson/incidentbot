@@ -49,8 +49,8 @@ class IncidentBot extends Ghee {
     }
 
     this.incidents[channel.id] = incident;
-
-    return `Starting new incident "${title}" at ${startDt.format(date_format)} UTC \n Join this hangout to collaborate: g.co/hangout/slicelife.com/incident-tests`;
+    const hangoutsTitle = title.replace(/\s/g, '-');
+    return `Starting new incident "${title}" at ${startDt.format(date_format)} UTC \n Join this hangout to collaborate: g.co/hangout/slicelife.com/incident-${hangoutsTitle}`;
   }
 
   /**
