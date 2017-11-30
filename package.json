@@ -5,8 +5,10 @@
   "main": "lib/bot.js",
   "scripts": {
     "prepublish": "node_modules/babel-cli/bin/babel.js src --out-dir lib",
-    "prestart": "node_modules/babel-cli/bin/babel.js src --out-dir lib",
-    "start": "node lib/bot.js",
+    "start:babel": "nodemon --config ./nodemon-babel.json node_modules/babel-cli/bin/babel.js src --out-dir lib",
+    "start:app": "nodemon --config ./nodemon-app.json lib/bot.js",
+    "start": "concurrently \"yarn start:babel\" \"yarn start:app\"",
+    "build": "node_modules/babel-cli/bin/babel.js src --out-dir lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -41,5 +43,9 @@
     "plugins": [
       "transform-decorators-legacy"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1",
+    "nodemon": "^1.12.1"
   }
 }
