@@ -1,0 +1,9 @@
+{
+  "restartable": "rs",
+  "colours": true,
+  "watch": ["src"],
+  "stdin": true,
+  "runOnChangeOnly": false,
+  "verbose": false,
+  "stdout": true
+}
