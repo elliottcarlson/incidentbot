@@ -8,7 +8,8 @@ dotenv.config({ silent: true });
 
 const token = process.env.SLACK_API_TOKEN || '';
 
-const date_format = 'dddd, MMMM Do YYYY, h:mm:ss a';
+const prettyDateFormat = 'dddd, MMMM Do YYYY, h:mm:ss a';
+const timestampDateFormat = 'YYYY-MM-DDTHH:mm:ss';
 
 class IncidentBot extends Ghee {
   constructor(token) {
@@ -50,7 +51,7 @@ class IncidentBot extends Ghee {
 
     this.incidents[channel.id] = incident;
     const hangoutsTitle = title.replace(/\s/g, '-');
-    return `Starting new incident "${title}" at ${startDt.format(date_format)} UTC \n Join this hangout to collaborate: g.co/hangout/slicelife.com/incident-${hangoutsTitle}`;
+    return `Starting new incident "${title}" at ${startDt.format(prettyDateFormat)} UTC \n Join this hangout to collaborate: g.co/hangout/slicelife.com/incident-${hangoutsTitle}`;
   }
 
   /**
@@ -149,7 +150,7 @@ class IncidentBot extends Ghee {
     if (channel.id in this.incidents) {
       this.incidents[channel.id].last_updated = moment();
       this.incidents[channel.id].history.push(
-        `[${moment().format(date_format)}] *${from.name}*: ${msg}`
+        `[${moment().format(timestampDateFormat)}] **${from.name}**: ${msg}`
       );
     }
   }
@@ -165,7 +166,7 @@ class IncidentBot extends Ghee {
       let incident = this.incidents[channel.id];
 
       let history = `# ${incident.title}\n\n` +
-        `> *Incident Start*: ${incident.start_dt.format(date_format)}\n` +
+        `> *Incident Start*: ${incident.start_dt.format(timestampDateFormat)}\n` +
         `> *Incident Duration*: ${dateDiff(incident.start_dt, moment())}\n` +
         `> *Initiated By*: ${incident.reporter_real_name}\n` +
         `> *Point Person*: ${incident.point || '_Unassigned_'}\n\n`;
